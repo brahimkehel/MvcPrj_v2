@@ -1,0 +1,24 @@
+﻿@model  Mini_Prj_.Models.Utilisateur
+@{ ViewBag.Title = "Login"; }
+
+<div class="row justify-content-center">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded w-50">
+        @using (Html.BeginForm("SeConnecter", "Utilisateurs"))
+        {<div style="text-align:center">
+                <h2 style="text-align: center;">Login</h2>
+                <div class="form-group">
+                    <input class="form-control m-auto" name="email" id="email" type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control m-auto" name="motDePasse" id="motDePasse" type="password" placeholder="Mot de passe" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control btn btn-primary" type="submit" value="Submit">
+                </div>
+                <div class="form-group">
+                    <a class="btn-link" href=@Url.Action("Create", "Utilisateurs")>Crée un compte</a>
+                </div>
+            </div>}
+    </div>
+</div>
+

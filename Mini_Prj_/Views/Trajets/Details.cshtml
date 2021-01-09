@@ -1,0 +1,52 @@
+﻿@model Mini_Prj_.Models.Trajet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded w-50 m-auto">
+    <div class="row justify-content-center">
+        <div>
+            <h4 style="text-align:center">Details de Trajet</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.depart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.depart)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.arriver)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.arriver)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_depart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_depart)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_arriver)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_arriver)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+         <a href="@Url.Action("Index","Trajets")"><i class="fas fa-arrow-left"></i> Retour à la liste des Trajets</a>
+    </p>
+        </div>

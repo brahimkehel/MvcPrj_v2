@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Mini_Prj_.Models.Utilisateur>
+
+@{ ViewBag.Title = "Index"; }
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card m-auto" style="width: 18rem;text-align:center">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-users-cog"></i></h3>
+                    <h5 class="card-text">Liste des Clients</h5>
+                    <a href="@Url.Action("ClientsList","Utilisateurs")" class="btn btn-outline-info">Modifier</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card m-auto" style="width: 18rem;text-align:center">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-address-card"></i></h3>
+                    <h5 class="card-text">Liste des Sociétes</h5>
+                    <a href="@Url.Action("SocietesList","Utilisateurs")" class="btn btn-outline-info">Modifier</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿@model Mini_Prj_.Models.Utilisateur
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded w-75 m-auto">
+    <div class="row justify-content-center">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Crée un compte</h4>  <div class="form-group">
+                    @Html.LabelFor(model => model.role_, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        <select class="form-control" onchange="f1()" id="role_" name="role_">
+                            <option value="client">Bénificiere</option>
+                            <option value="societe">Societé</option>
+                        </select>
+                    </div>
+                </div>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label for="raisonSocial" id="l1" style="display:none;">Raison Social</label>
+                        <input class="form-control" id="raisonSocial" name="raisonSocial" type="text" style="display:none;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label for="adresse" id="l2" style="display:none;">Adresse</label>
+                        <input class="form-control" id="adresse" name="adresse" type="text" style="display:none;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.nom, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.nom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.prenom, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.prenom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.prenom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.motDePasse, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.PasswordFor(model => model.motDePasse, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.motDePasse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.telephone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.telephone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.telephone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="submit" value="Create" class="btn btn-outline-info w-100" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script>
+    var select = document.getElementById("role_");
+    var raisonSocial = document.getElementById("raisonSocial");
+    var l1 = document.getElementById("l1");
+    var l2 = document.getElementById("l2");
+    var adresse = document.getElementById("adresse");
+    function f1() {
+        if (select.value == "societe") {
+            raisonSocial.style.display = "block";
+            adresse.style.display = "block";
+            l1.style.display = "block";
+            l2.style.display = "block";
+        }
+        else {
+            raisonSocial.style.display = "none";
+            adresse.style.display = "none";
+            l1.style.display = "none";
+            l2.style.display = "none";
+        }
+    }
+</script>

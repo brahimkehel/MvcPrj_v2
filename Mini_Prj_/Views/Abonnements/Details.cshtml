@@ -1,0 +1,60 @@
+﻿@model Mini_Prj_.Models.Abonnement
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded w-50 m-auto">
+    <div class="row justify-content-center">
+        <div>
+            <h4 style="text-align:center">Details d'Abonnement</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_debut)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_debut)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_fin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_fin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tarif)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tarif)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Trajet.depart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Trajet.depart)
+                </dd>
+                
+                <dt>
+                    @Html.DisplayNameFor(model => model.Trajet.arriver)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Trajet.arriver)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id, @class = "btn btn-info" }) |
+        <a href="@Url.Action("Index","Abonnements")"><i class="fas fa-arrow-left"></i> Retour à la liste des Abonnements</a>
+    </p>
+</div>

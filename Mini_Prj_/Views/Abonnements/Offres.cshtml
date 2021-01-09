@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Offres";
+}
+<br />
+
+<br />
+<div class="row justify-content-center">
+    <div class="table-responsive">
+        <table class="table table-hover w-100 m-auto" style="max-height:400px">
+            @foreach (var c in ViewBag.offres)
+            {
+            <tr>
+                <td style="vertical-align: middle;"><h5><i class="fas fa-road"></i></h5></td>
+                <td style="vertical-align: middle;">
+                    <div class="row"><h5 style="color:darkslateblue;">@c.date_depart | @c.depart</h5></div>
+                    <div class="row"><h5 style="color:darkslateblue;">@c.date_arriver | @c.arriver</h5></div>
+                </td>
+                <td style="vertical-align: middle;"><h5>@c.typeDeVehicule</h5></td>
+                <td style="vertical-align: middle;"><h5>@c.tarif DH</h5></td>
+                <td style="vertical-align: middle;"><a href="@Url.Action("Delete","Utilisateurs",new { id = c.id })"><i style="cursor:pointer" class="fas fa-trash-alt"></i></a></td>
+
+            </tr>
+            }
+        </table>
+    </div>
+</div>
+
+

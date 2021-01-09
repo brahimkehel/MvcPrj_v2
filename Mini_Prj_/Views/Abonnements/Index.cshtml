@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Mini_Prj_.Models.Abonnement>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    <i class="fas fa-plus-circle"></i>
+    @Html.ActionLink("Crée Abonnement", "Create")
+</p>
+<table class="table table-hover table-responsive-lg" style="max-height: 300px;">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.date_debut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tarif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trajet.depart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trajet.arriver)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_debut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_fin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tarif) DH
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trajet.depart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trajet.arriver)
+        </td>
+        <td>
+            <a class="fas fa-pen-square" href="@Url.Action("Edit", "Abonnements", new { id = item.id })"></a> |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            <a class="fas fa-trash" href="@Url.Action("Delete", "Abonnements",new { id = item.id })"></a>
+        </td>
+    </tr>
+}
+
+</table>

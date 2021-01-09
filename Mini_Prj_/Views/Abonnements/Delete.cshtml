@@ -1,0 +1,66 @@
+﻿@model Mini_Prj_.Models.Abonnement
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded w-50 m-auto">
+    <div class="row justify-content-center">
+        <div>
+            <h4 style="text-align:center">Abonnement</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_debut)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_debut)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_fin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_fin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tarif)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tarif)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Trajet.depart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Trajet.depart)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Trajet.arriver)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Trajet.arriver)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>
+</div>

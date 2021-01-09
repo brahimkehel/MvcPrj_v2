@@ -1,0 +1,64 @@
+﻿@model Mini_Prj_.Models.Demande_Trajet
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Demande_Trajet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.arriver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.arriver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_depart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_depart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_arriver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_arriver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

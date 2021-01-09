@@ -1,0 +1,58 @@
+﻿@model Mini_Prj_.Models.Trajet
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded w-75 m-auto">
+    <div class="row justify-content-center">
+        <div>
+            <h4 style="text-align:center">Voulez vous supprimer Trajet?</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.depart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.depart)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.arriver)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.arriver)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_depart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_depart)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.date_arriver)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.date_arriver)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+        </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model Mini_Prj_.Models.Bus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded w-50 m-auto">
+    <div class="row justify-content-center">
+        <div>
+            <h4 style="text-align:center">Details de Bus</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.typeDeVehicule)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.typeDeVehicule)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.description_)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.description_)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Societe.adresse)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Societe.adresse)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Trajet.depart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Trajet.depart)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id, @class = "btn btn-info" }) |
+         <a href="@Url.Action("Index","Buses")"><i class="fas fa-arrow-left"></i> Retour à la liste des bus</a>
+    </p>
+</div>

@@ -1,0 +1,43 @@
+﻿
+@{ ViewBag.Title = "dashboard"; }
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col mt-2">
+            <div class="card m-auto" style="width: 18rem;text-align:center">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-bus"></i></h3>
+                    <h5 class="card-text">Gérer Bus</h5>
+                    <a href="@Url.Action("Index","Buses")" class="btn btn-outline-info">Modifier</a>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-2">
+            <div class="card m-auto" style="width: 18rem;text-align:center">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-road"></i></h3>
+                    <h5 class="card-text">Gérer Trajet</h5>
+                    <a href="@Url.Action("Index","Trajets")" class="btn btn-outline-info">Modifier</a>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-2">
+            <div class="card m-auto" style="width: 18rem;text-align:center">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-book"></i></h3>
+                    <h5 class="card-text">Gérer Abonnement</h5>
+                    <a href="@Url.Action("Index","Abonnements")" class="btn btn-outline-info">Modifier</a>
+                </div>
+            </div>
+        </div>
+        <div class="col mt-2">
+            <div class="card m-auto" style="width: 18rem;text-align:center">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="fas fa-tasks"></i></h3>
+                    <h5 class="card-text">Demandes d'Abonnement</h5>
+                    <a href="@Url.Action("Index","Demande_Trajet")" class="btn btn-outline-info">Modifier</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

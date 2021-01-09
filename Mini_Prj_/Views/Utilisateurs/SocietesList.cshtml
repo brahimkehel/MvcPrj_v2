@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Mini_Prj_.Models.Utilisateur>
+@{ ViewBag.Title = "SocietesList"; }
+
+<div class="container">
+    <h1>Liste des societes</h1>
+    <div class="row justify-content-center">
+        <table class="table table-responsive table-hover m-auto" style="max-height:400px">
+            <thead class="thead-dark">
+                <tr>
+                    <th></th>
+                    <th>Id Societe</th>
+                    <th>RaisonSociale</th>
+                    <th>Nom de Responsable</th>
+                    <th>Prenom de Responsable</th>
+                    <th>Adresse</th>
+                    <th>Email</th>
+                    <th>Mot de passe</th>
+                    <th>Telephone</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+    <tr>
+        <td><i class="fas fa-user-tie"></i></td>
+        <td>@c.id</td>
+        <td>@c.Societe.raisonSocial</td>
+        <td>@c.nom</td>
+        <td>@c.prenom</td>
+        <td>@c.Societe.adresse</td>
+        <td>@c.email</td>
+        <td>@c.motDePasse</td>
+        <td>@c.telephone</td>
+        <td><a href="@Url.Action("Delete","Utilisateurs",new { id = c.id })"><i style="cursor:pointer" class="fas fa-trash-alt"></i></a></td>
+
+    </tr>}
+            </tbody>
+        </table>
+    </div>
+</div>
+

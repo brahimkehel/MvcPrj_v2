@@ -1,0 +1,90 @@
+﻿@model Mini_Prj_.Models.Utilisateur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Utilisateur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.motDePasse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.motDePasse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telephone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telephone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.role_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.role_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Administrateur.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Administrateur.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Societe.adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Societe.adresse)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

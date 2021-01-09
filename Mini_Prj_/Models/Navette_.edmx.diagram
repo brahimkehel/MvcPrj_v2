@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="67fcdabd8a4046e58f83c0328ddbc74d" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="NavetteDB_Model.Abonnement" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Administrateur" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Affectation" Width="1.5" PointX="7.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Bus" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Client" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Demande_Trajet" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Societe" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Trajet" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Utilisateur" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteDB_Model.Ville" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Abonnemen__idSoc__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Abonnemen__idTra__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Affectati__idAbo__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Administrate__id__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Affectati__idCli__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Bus__idSociete__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Bus__idTrajet__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Client__id__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Demande_T__idUti__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteDB_Model.FK__Societe__id__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

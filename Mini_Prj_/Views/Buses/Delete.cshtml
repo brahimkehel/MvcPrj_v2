@@ -1,0 +1,58 @@
+﻿@model Mini_Prj_.Models.Bus
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded w-50 m-auto">
+    <div class="row justify-content-center">
+        <div>
+            <h4 style="text-align:center">Bus</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.typeDeVehicule)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.typeDeVehicule)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.description_)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.description_)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Societe.adresse)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Societe.adresse)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Trajet.depart)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Trajet.depart)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger"   /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+        </div>
+        </div>

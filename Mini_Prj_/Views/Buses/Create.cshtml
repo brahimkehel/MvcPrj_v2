@@ -1,0 +1,73 @@
+﻿@model Mini_Prj_.Models.Bus
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="shadow-lg p-3 mb-5 bg-white rounded m-auto">
+    <div class="row justify-content-center">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4 style="text-align:center">Ajouter un Bus</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.typeDeVehicule, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @*<div class="col-md-10">
+                            @Html.EditorFor(model => model.typeDeVehicule, new { htmlAttributes = new { @class = "form-control",@style="display:none" } })
+                            @Html.ValidationMessageFor(model => model.typeDeVehicule, "", new { @class = "text-danger" })
+                        </div>*@
+                    <div class="row justify-content-center">
+                        <div class="col-sm-4">
+                            <h5 style="color: #296d98;margin:auto;">Service Plus</h5><img src="~/Content/Images/154-catagorie-m.jpg" class="w-50 h-75" />
+                            <input type="radio" id="r1" name="typeDeVehicule" value="plus">
+                        </div>
+                        <div class="col-sm-4">
+                            <h5 style="color: #296d98;margin:auto;">Standard</h5><img src="~/Content/Images/minibus.jpg" class="w-50 h-75" />
+                            <input type="radio" id="r2" name="typeDeVehicule" value="standard">
+                        </div>
+                        <div class="col-sm-4">
+                            <h5 style="color: #296d98;margin:auto;">Premium</h5><img src="~/Content/Images/vehiculo_81.png" class="w-50 h-75" />
+                            <input type="radio" id="r3" name="typeDeVehicule" value="premium">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.description_, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.description_, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.description_, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Id de societe</label>
+                    <div class="col-md-10">
+                        <input name="idSociete" id="idSociete" value="@ViewBag.UsrSession.id" class="form-control" readonly/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.idTrajet, "idTrajet", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("idTrajet", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.idTrajet, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="submit" value="Create" class="btn btn-outline-info w-100" />
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    <div>
+        <a href="@Url.Action("Index","Buses")"><i class="fas fa-arrow-left"></i> Retour à la liste des bus</a>
+    </div>
+    </div>

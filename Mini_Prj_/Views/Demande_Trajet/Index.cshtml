@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Mini_Prj_.Models.Demande_Trajet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h5>
+    <i class="fas fa-list-alt"></i> Liste des demandes de Trajet
+</h5>
+<table class="table table-hover table-responsive-lg" style="max-height: 300px; ">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.depart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arriver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_depart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_arriver)
+        </th>
+        <th>
+            Nom de Client
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.depart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.arriver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_depart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_arriver)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Utilisateur.nom) @Html.DisplayFor(modelItem => item.Client.Utilisateur.prenom)
+            </td>
+            <td>
+                @using (Html.BeginForm("AjouterDemande", "Demande_Trajet", new { id = item.id }, FormMethod.Post))
+                {
+                    <a class="fas fa-check-square"></a> <input type="submit" class="btn-link border-0" value="Accpeter" />
+                    }|
+                @Html.ActionLink("Details", "Details", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

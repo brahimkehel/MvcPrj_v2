@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NavetteDB_ModelStoreContainer" CdmEntityContainer="NavetteDB_Entities">
+    <EntitySetMapping Name="Abonnements">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Abonnement">
+        <MappingFragment StoreEntitySet="Abonnement">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idTrajet" ColumnName="idTrajet" />
+          <ScalarProperty Name="idSociete" ColumnName="idSociete" />
+          <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+          <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+          <ScalarProperty Name="tarif" ColumnName="tarif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Administrateurs">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Administrateur">
+        <MappingFragment StoreEntitySet="Administrateur">
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Affectations">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Affectation">
+        <MappingFragment StoreEntitySet="Affectation">
+          <ScalarProperty Name="idAbonnement" ColumnName="idAbonnement" />
+          <ScalarProperty Name="idClient" ColumnName="idClient" />
+          <ScalarProperty Name="date_affectation" ColumnName="date_affectation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buses">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Bus">
+        <MappingFragment StoreEntitySet="Bus">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeDeVehicule" ColumnName="typeDeVehicule" />
+          <ScalarProperty Name="description_" ColumnName="description_" />
+          <ScalarProperty Name="idSociete" ColumnName="idSociete" />
+          <ScalarProperty Name="idTrajet" ColumnName="idTrajet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Demande_Trajet">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Demande_Trajet">
+        <MappingFragment StoreEntitySet="Demande_Trajet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="depart" ColumnName="depart" />
+          <ScalarProperty Name="arriver" ColumnName="arriver" />
+          <ScalarProperty Name="date_depart" ColumnName="date_depart" />
+          <ScalarProperty Name="date_arriver" ColumnName="date_arriver" />
+          <ScalarProperty Name="idUtilisateur" ColumnName="idUtilisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Societes">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Societe">
+        <MappingFragment StoreEntitySet="Societe">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="raisonSocial" ColumnName="raisonSocial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trajets">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Trajet">
+        <MappingFragment StoreEntitySet="Trajet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="depart" ColumnName="depart" />
+          <ScalarProperty Name="arriver" ColumnName="arriver" />
+          <ScalarProperty Name="date_depart" ColumnName="date_depart" />
+          <ScalarProperty Name="date_arriver" ColumnName="date_arriver" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateurs">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="motDePasse" ColumnName="motDePasse" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="role_" ColumnName="role_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Villes">
+      <EntityTypeMapping TypeName="NavetteDB_Model.Ville">
+        <MappingFragment StoreEntitySet="Ville">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ville1" ColumnName="ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
