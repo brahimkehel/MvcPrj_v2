@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Mini_Prj_.Models.Demande_Trajet>
+@{
+    ViewBag.Title = "MesDemandes";
+}
+
+<h2 style="text-align:center;">Mes Demandes</h2>
+<br />
+<p>
+    <i class="fas fa-paper-plane"></i>
+    @Html.ActionLink("Envoyer une Demande", "Create")
+</p>
+<div class="shadow-lg p-3 mb-5 bg-white rounded m-auto">
+    <div class="row justify-content-center">
+        <div class="table-responsive">
+            <table class="table table-hover w-100 m-auto" style="max-height:400px">
+                @if (Model != null)
+                {
+                    <tr class="thead-dark">
+                        <th>
+                            @Html.DisplayNameFor(model => model.depart)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.arriver)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.date_depart)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.date_arriver)
+                        </th>
+                        <th>
+                            Nom de Client
+                        </th>
+                        <th></th>
+                    </tr>
+                    foreach (var c in Model)
+                    {
+                        <tr>
+                            <td style="vertical-align: middle;"><h5>@c.depart</h5></td>
+                            <td style="vertical-align: middle;"><h5>@c.arriver</h5></td>
+                            <td style="vertical-align: middle;"><h5>@c.date_depart</h5></td>
+                            <td style="vertical-align: middle;"><h5>@c.date_arriver</h5></td>
+                            <td style="vertical-align: middle;"><h5>@c.Client.Utilisateur.nom</h5></td>
+                            <td style="vertical-align: middle;">
+                                <i class="fas fa-info-circle"></i>
+                                @Html.ActionLink("Details", "Details", new { id = c.id }) |
+
+                                <a class="btn btn-outline-danger btn-sm passingID" data-toggle="modal" data-target="#exampleModal" data-id="@c.id">
+                                    <i class="fas fa-trash"></i> Supprimer
+                                </a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" onshow="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Suppression!</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Etes vous sur de supprimer cette demande?</p>
+                                                <input id="id_" type="text" hidden readonly />
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-outline-danger" onclick="f1()">Supprimer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                }
+                @if (Model == null)
+                {
+                    <tr><td style="text-align:center;"><h5>Aucune resultat trouvé</h5></td></tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    var id = document.getElementById("id_");
+    $(document).on("click", ".passingID", function () {
+        var ids = $(this).attr('data-id');
+        id.value = ids;
+    });
+    function f1() {
+        window.location.href = "https://localhost:44344/Demande_Trajet/DeleteD/" + id.value;
+    }
+</script>

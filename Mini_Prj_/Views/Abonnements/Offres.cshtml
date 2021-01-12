@@ -3,27 +3,92 @@
     ViewBag.Title = "Offres";
 }
 <br />
-
-<br />
-<div class="row justify-content-center">
-    <div class="table-responsive">
-        <table class="table table-hover w-100 m-auto" style="max-height:400px">
-            @foreach (var c in ViewBag.offres)
-            {
+<div class="shadow-lg p-3 mb-5 bg-white rounded m-auto">
+    <table class="m-auto">
+        @using (Html.BeginForm("Offres", "Abonnements", FormMethod.Get))
+        {
             <tr>
-                <td style="vertical-align: middle;"><h5><i class="fas fa-road"></i></h5></td>
-                <td style="vertical-align: middle;">
-                    <div class="row"><h5 style="color:darkslateblue;">@c.date_depart | @c.depart</h5></div>
-                    <div class="row"><h5 style="color:darkslateblue;">@c.date_arriver | @c.arriver</h5></div>
-                </td>
-                <td style="vertical-align: middle;"><h5>@c.typeDeVehicule</h5></td>
-                <td style="vertical-align: middle;"><h5>@c.tarif DH</h5></td>
-                <td style="vertical-align: middle;"><a href="@Url.Action("Delete","Utilisateurs",new { id = c.id })"><i style="cursor:pointer" class="fas fa-trash-alt"></i></a></td>
-
+                <th>Depart :</th>
+                <th>Arriver :</th>
+                <th></th>
             </tr>
-            }
+            <tr>
+                <td>
+                    @Html.DropDownList("depart", null, htmlAttributes: new { @id = "FromJson", @class = "form-control m-2" })
+                </td>
+                <td>
+                    @Html.DropDownList("arriver", null, htmlAttributes: new { @id = "FromJson2", @class = "form-control m-2" })
+                </td>
+                <td>
+                    <input type="submit" value="Chercher" class="btn btn-outline-info" />
+                </td>
+            </tr>
+        }
         </table>
-    </div>
 </div>
+<br />
+<div class="shadow-lg p-3 mb-5 bg-white rounded m-auto">
+    <div class="row justify-content-center">
+        <div class="table-responsive">
+            <table class="table table-hover w-100 m-auto" style="max-height:400px">
+                @if (ViewBag.offres != null)
+                {
+                    if (ViewBag.dejaExist != null)
+                    {
+                        <tr><td style="text-align:center;color:darkred"><h5>@ViewBag.dejaExist</h5></td></tr>
+                    }
+                    foreach (var c in ViewBag.offres)
+                    {
+                        var tarif = c.tarif;
+                        var duree = c.date_fin.Subtract(System.DateTime.Now).Days;
+                        if (duree > 0)
+                        {
+                            <tr>
+                                <td style="vertical-align: middle;"><h5><i class="fas fa-road"></i></h5></td>
+                                <td style="vertical-align: middle;">
+                                    <div class="row"><h5 style="color:darkslateblue;">@c.date_depart | @c.depart</h5></div>
+                                    <div class="row"><h5 style="color:darkslateblue;">@c.date_arriver | @c.arriver</h5></div>
+                                </td>
+                                <td style="vertical-align: middle;"><h5>Service: @c.typeDeVehicule</h5></td>
+                                @if (@c.typeDeVehicule == "premium")
+                                        {
+                                            tarif += 80;
+                                    <td style="vertical-align: middle;"><h6><i class="fas fa-wifi"></i>  <i class="fas fa-restroom"></i>  <i class="fas fa-battery-full"></i></h6></td>
+                                }
+                                @if (@c.typeDeVehicule == "plus")
+                                {
+                                    tarif += 35;
+                                    <td style="vertical-align: middle;"><h6><i class="fas fa-wifi"></i> <i class="fab fa-usb"></i></h6></td>
+                                }
+                                @if (@c.typeDeVehicule == "standard")
+                                {
+                                    <td style="vertical-align: middle;"><h6><i class="fab fa-usb"></i></h6></td>
+                                }
+                                <td style="vertical-align: middle;"><h5><i class="fas fa-bus"></i> @c.nbBus</h5></td>
+                                <td style="vertical-align: middle;"><h5>@tarif DH</h5></td>
+                                <td style="vertical-align: middle;"><a href="@Url.Action("Reserver","Abonnements",new { idA = c.id })"><i style="cursor:pointer" class="fas fa-ticket-alt"></i>Reserver</a></td>
+
+                            </tr>
+                        }
+                    }
+                }
+                @if (ViewBag.offres == null)
+                {
+                    <tr><td style="text-align:center;"><h5>Aucune resultat trouvé</h5></td></tr>
+                }
+            </table>
+        </div>
+    </div>
+ </div>
+
+    @section scripts{
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+        <script>
+            $(document).ready(function () { $("#FromJson").select2(); });
+            $(document).ready(function () { $("#FromJson2").select2(); });
 
 
+        </script>
+    }

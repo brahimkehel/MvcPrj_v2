@@ -89,3 +89,4 @@ D:\mvc\repos\Mini_Prj_\Mini_Prj_\obj\Debug\Mini_Prj_.csproj.CoreCompileInputs.ca
 D:\mvc\repos\Mini_Prj_\Mini_Prj_\obj\Debug\Mini_Prj_.csproj.CopyComplete
 D:\mvc\repos\Mini_Prj_\Mini_Prj_\obj\Debug\Mini_Prj_.dll
 D:\mvc\repos\Mini_Prj_\Mini_Prj_\obj\Debug\Mini_Prj_.pdb
+D:\mvc\repos\Mini_Prj_\Mini_Prj_\obj\Debug\Mini_Prj_.csprojAssemblyReference.cache

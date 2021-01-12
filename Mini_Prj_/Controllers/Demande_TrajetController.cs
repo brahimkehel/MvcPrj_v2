@@ -15,16 +15,59 @@ namespace Mini_Prj_.Controllers
     {
         private NavetteDB_Entities db = new NavetteDB_Entities();
 
+        //Post DeleteD
+        public async Task<ActionResult> DeleteD(int id)
+        {
+            int idC = int.Parse(Session["Usrid"].ToString());
+            var demande = from d in db.Demande_Trajet where d.id == id && d.idUtilisateur == idC select d;
+            db.Demande_Trajet.Remove(demande.FirstOrDefault());
+            await db.SaveChangesAsync();
+            return RedirectToAction("MesDemandes");
+        }
+
+        //Get:MesDemandes
+        public async Task<ActionResult> MesDemandes()
+        {
+            ViewBag.UsrSession = Session["UsrSession"];
+            if (Session["UsrSession"] != null)
+            {
+                int idC = int.Parse(Session["Usrid"].ToString());
+                var check = (from u in db.Utilisateurs where u.id == idC select u).FirstOrDefault();
+                if (check.role_=="client")
+                {
+                    var demande_Trajet = (from d in db.Demande_Trajet where d.idUtilisateur == idC select d);
+                    return View(await demande_Trajet.ToListAsync());
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Utilisateurs");
+                }
+
+            }
+            else
+            {
+                return RedirectToAction("Login", "Utilisateurs");
+            }
+        }
+        //
         [HttpPost]
         public async Task<ActionResult> AjouterDemande(int id)
         {
             ViewBag.UsrSession = Session["UsrSession"];
             if (Session["UsrSession"] != null)
             {
-                    var query = (from d in db.Demande_Trajet where d.id==id select d).FirstOrDefault();
-                    db.Trajets.Add(new Trajet {depart=query.depart,arriver=query.arriver,date_depart=query.date_depart,date_arriver=query.date_arriver });
+                var query = (from d in db.Demande_Trajet where d.id == id select d).FirstOrDefault();
+                var check = (from t in db.Trajets where t.depart==query.depart && t.arriver==query.arriver select t).FirstOrDefault();
+                if(check==null)
+                {
+                    db.Trajets.Add(new Trajet { depart = query.depart, arriver = query.arriver, date_depart = query.date_depart, date_arriver = query.date_arriver });
                     await db.SaveChangesAsync();
-                    return RedirectToAction("Index");  
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             else
             {
@@ -77,6 +120,13 @@ namespace Mini_Prj_.Controllers
             if (Session["UsrSession"] != null)
             {
                 ViewBag.idUtilisateur = new SelectList(db.Clients, "id", "id");
+                List<SelectListItem> villes = new List<SelectListItem>();
+                foreach (var v in db.Villes)
+                {
+                    villes.Add(new SelectListItem { Text = v.ville1, Value = v.ville1 });
+                }
+                ViewBag.depart = villes;
+                ViewBag.arriver = villes;
                 return View();
             }
             else
@@ -99,7 +149,7 @@ namespace Mini_Prj_.Controllers
                 {
                     db.Demande_Trajet.Add(demande_Trajet);
                     await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("MesDemandes");
                 }
 
                 ViewBag.idUtilisateur = new SelectList(db.Clients, "id", "id", demande_Trajet.idUtilisateur);
@@ -149,7 +199,7 @@ namespace Mini_Prj_.Controllers
                 {
                     db.Entry(demande_Trajet).State = EntityState.Modified;
                     await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("MesDemandes");
                 }
                 ViewBag.idUtilisateur = new SelectList(db.Clients, "id", "id", demande_Trajet.idUtilisateur);
                 return View(demande_Trajet);
@@ -191,7 +241,7 @@ namespace Mini_Prj_.Controllers
             Demande_Trajet demande_Trajet = await db.Demande_Trajet.FindAsync(id);
             db.Demande_Trajet.Remove(demande_Trajet);
             await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("MesDemandes");
         }
 
         protected override void Dispose(bool disposing)

@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Mini_Prj_.Models.Affectation>
+@{
+    ViewBag.Title = "MesAbonnements";
+}
+<h3 style="color:darkslateblue;text-align:center;">Mes Abonnements</h3>
+<div class="shadow-lg p-3 mb-5 bg-white rounded m-auto">
+    <div class="row justify-content-center">
+        <div class="table-responsive">
+            <table class="table table-hover w-100 m-auto" style="max-height:400px">
+                @if (Model != null)
+                {
+                    foreach (var c in Model)
+                    {
+                        var duree = c.Abonnement.date_fin - DateTime.Now;
+                        if (duree.Value.Days > 0)
+                        {
+                <tr>
+                    <td style="vertical-align: middle;"><h5><i class="fas fa-road"></i><i class="fas fa-check" style="color:forestgreen"></i></h5></td>
+                    <td style="vertical-align: middle;">
+                        <div class="row"><h5 style="color:darkslateblue;">@c.Abonnement.Trajet.date_depart | @c.Abonnement.Trajet.depart</h5></div>
+                        <div class="row"><h5 style="color:darkslateblue;">@c.Abonnement.Trajet.date_arriver | @c.Abonnement.Trajet.arriver</h5></div>
+                    </td>
+                    <td style="vertical-align: middle;"><h5>@c.Abonnement.tarif DH</h5></td>
+                    <td style="vertical-align: middle;"><h5 style="color:forestgreen">valable</h5></td>
+                    <td style="vertical-align: middle;">
+
+                        <a class="btn btn-outline-danger btn-sm passingID" data-toggle="modal" data-target="#exampleModal" data-id="@c.idAbonnement">
+                            <i class="fas fa-trash"></i> Supprimer
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" onshow="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Suppression!</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Etes vous sur de supprimer cette abonnement?</p>
+                                        <input id="id_" type="text" hidden readonly />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-outline-danger" onclick="f1()">Supprimer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                        }
+                        if (duree.Value.Days < 0)
+                        {
+                            <tr style="background-color:#ED2939;">
+                                <td style="vertical-align: middle;"><h5><i class="fas fa-road"></i><i class="fas fa-exclamation"></i></h5></td>
+                                <td style="vertical-align: middle;">
+                                    <div class="row"><h5>@c.Abonnement.Trajet.date_depart | @c.Abonnement.Trajet.depart</h5></div>
+                                    <div class="row"><h5>@c.Abonnement.Trajet.date_arriver | @c.Abonnement.Trajet.arriver</h5></div>
+                                </td>
+                                <td style="vertical-align: middle;"><h5>@c.Abonnement.tarif DH</h5></td>
+                                <td style="vertical-align: middle;"><h5>epuisé</h5></td>
+                                <td style="vertical-align: middle;">
+
+                                
+                                        <a class="btn btn-outline-light btn-sm passingID" data-toggle="modal" data-target="#exampleModal" data-id="@c.idAbonnement">
+                                            <i class="fas fa-trash"></i> Supprimer
+                                        </a>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" onshow="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Suppression!</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Etes vous sur de supprimer cette abonnement?</p>
+                                                    <input id="id_" type="text" hidden readonly/>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-outline-danger" onclick="f1()">Supprimer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                }
+                @if (Model == null)
+                {
+                    <tr><td style="text-align:center;"><h5>Aucune resultat trouvé</h5></td></tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    var id = document.getElementById("id_");
+    $(document).on("click", ".passingID", function () {
+        var ids = $(this).attr('data-id');
+        id.value = ids;
+    });
+    function f1() {
+        window.location.href = "https://localhost:44344/Abonnements/DeleteA/"+id.value;
+}
+</script>

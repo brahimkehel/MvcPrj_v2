@@ -37,6 +37,7 @@ namespace Mini_Prj_.Controllers
             if (query != null)
             {
                 Session["UsrSession"] = query;
+                Session["Usrid"] = query.id;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -180,7 +181,7 @@ namespace Mini_Prj_.Controllers
             {
                 db.Entry(utilisateur).State = EntityState.Modified;
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.id = new SelectList(db.Administrateurs, "id", "id", utilisateur.id);
             ViewBag.id = new SelectList(db.Clients, "id", "id", utilisateur.id);

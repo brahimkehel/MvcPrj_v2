@@ -389,6 +389,8 @@
     <Content Include="Views\Demande_Trajet\Edit.cshtml" />
     <Content Include="Views\Demande_Trajet\Index.cshtml" />
     <Content Include="Views\Abonnements\Offres.cshtml" />
+    <Content Include="Views\Abonnements\MesAbonnements.cshtml" />
+    <Content Include="Views\Demande_Trajet\MesDemandes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

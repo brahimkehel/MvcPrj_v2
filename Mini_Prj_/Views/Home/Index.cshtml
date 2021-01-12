@@ -4,7 +4,13 @@
 <header id="head">
     <div class="container">
         <div class="row">
-            <p><a class="btn btn-primary btn-lg">Effectuer une Abonnement</a> <a class="btn btn-info btn-lg">Consulter les offres</a></p>
+            <p>
+                @if (ViewBag.UsrSession!=null && ViewBag.UsrSession.role_ == "client")
+                {
+                     <a class="btn btn-primary btn-lg" href="@Url.Action("Create", "Demande_Trajet")">Effectuer une Demande <i class="fas fa-road"></i></a>
+                 }
+                     <a class="btn btn-info btn-lg" href="@Url.Action("Offres", "Abonnements")">Consulter les offres</a>
+            </p>
         </div>
     </div>
 </header>
